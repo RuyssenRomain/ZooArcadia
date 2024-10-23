@@ -1,0 +1,32 @@
+# Ignorer les fichiers système et temporaires
+**/.DS_Store
+**/Thumbs.db
+**/*.log
+**/tmp
+
+# Ignorer les configurations locales et caches
+.env.local
+.cache
+.vscode/
+.idea/
+
+# Ignorer les dossiers de dépendances locaux
+node_modules/
+vendor/
+
+# Ignorer les fichiers de builds locaux ou temporaires
+dist/
+build/
+
+# Ignorer les fichiers git
+.git
+.gitignore
+
+# Ignorer les fichiers Docker locaux
+docker-compose.dev.yml
+Dockerfile.dev
+
+# Ignorer les fichiers générés par l'IDE
+*.iml
+*.sublime-project
+*.sublime-workspace

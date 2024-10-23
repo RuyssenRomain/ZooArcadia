@@ -1,0 +1,16 @@
+# dossiers de dépendances
+node_modules/
+vendor/
+
+# fichiers de configuration de éditeurs de texte
+.idea/
+.vscode/
+.DS_Store
+
+# fichiers de configuration locaux 
+.env
+
+# fichier générés
+dist/
+build/
+coverage/ 
