@@ -1,0 +1,36 @@
+{
+  "name": "zoo-arcadia",
+  "version": "1.0.0",
+  "description": "Web Application ZooArcadia is a API-RESTfull project with separated front-end and back-end architecture. Front conception use Vite for developement.Back-end respect psr-7 and psr-15 conception.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/RuyssenRomain/ZooArcadia.git"
+  },
+  "keywords": [
+    "ZOO",
+    "PHP",
+    "MYSQL",
+    "MONGODB",
+    "COMPOSER",
+    "VITE",
+    "HTML",
+    "TAILWINDCSS",
+    "JAVASCRIPT"
+  ],
+  "author": "ruyssen romain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RuyssenRomain/ZooArcadia/issues"
+  },
+  "homepage": "https://github.com/RuyssenRomain/ZooArcadia#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14"
+  }
+}
