@@ -1,4 +1,4 @@
-# Arcadia Zoo Application
+#  ZooArcadia Application
 
 Bienvenue dans le projet **ZooArcadia** est une application web moderne utilisant **PHP**, **Node.js** (Vite), **Tailwind CSS**, **MySQL**, **MongoDB**, et **Nginx**. Cette application est containerisée avec **Docker** et **Docker Compose**, offrant une configuration sécurisée, centralisée et évolutive.
 
