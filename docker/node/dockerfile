@@ -1,0 +1,23 @@
+# Dockerfile situé à ./docker/node/Dockerfile
+
+ARG BUILD_NODE_VERSION
+
+FROM node:${BUILD_NODE_VERSION}
+
+# Définir le répertoire de travail
+WORKDIR /app
+
+# Copier les fichiers package.json et package-lock.json
+COPY Frontend/package.json Frontend/package-lock.json ./
+
+# Installer les dépendances
+RUN npm install
+
+# Copier les fichiers du projet
+COPY Frontend/ . 
+
+# Exposer le port
+EXPOSE 5173
+
+# Commande par défaut
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]

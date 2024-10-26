@@ -1,0 +1,41 @@
+# Utiliser la version PHP définie par les arguments
+ARG PHP_VERSION
+
+# Utilisation de l'image officielle PHP avec la version spécifiée par la variable PHP_VERSION
+FROM php:${PHP_VERSION}
+
+# Installer les extensions PHP nécessaires et d'autres outils
+RUN apk add --no-cache \
+    libpng-dev \
+    libjpeg-turbo-dev \
+    libwebp-dev \
+    freetype-dev \
+    zip \
+    libzip-dev \
+    oniguruma-dev \
+    bash \
+    && docker-php-ext-configure zip \
+    && docker-php-ext-install pdo pdo_mysql zip
+
+# Installer Composer depuis l'image composer:2.1
+COPY --from=composer:2.1 /usr/bin/composer /usr/bin/composer
+
+# Définir le répertoire de travail
+WORKDIR /var/www/html
+
+# Copier les fichiers de l'application
+COPY ./Backend/composer.json ./Backend/composer.lock ./   
+COPY ./Backend/src /var/www/html/src                      
+COPY ./Backend/public /var/www/html/public
+
+# Installer les dépendances PHP
+RUN composer install --no-dev --optimize-autoloader
+
+# Changer les permissions
+RUN chown -R www-data:www-data /var/www/html
+
+# Exposer le port PHP-FPM
+EXPOSE 9000
+
+# Démarrer PHP-FPM
+CMD ["php-fpm"]
