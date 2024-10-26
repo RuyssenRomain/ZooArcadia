@@ -1,0 +1,9 @@
+# Utiliser la version MySQL définie par les arguments
+ARG MYSQL_VERSION
+FROM mysql:${MYSQL_VERSION}
+
+# Copier le script d'initialisation
+COPY ./docker/mysql/init.sql /docker-entrypoint-initdb.d/init.sql
+
+# Exposer le port MySQL
+EXPOSE 3306
