@@ -3,7 +3,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Ruyss\\Backend\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
