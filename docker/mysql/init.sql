@@ -16,16 +16,38 @@ GRANT ALL PRIVILEGES ON arcadia_zoo_db.* TO 'arcadiaUser'@'%' WITH GRANT OPTION;
 -- Appliquer les changements de privilèges
 FLUSH PRIVILEGES;
 
--- Création de la table des habitats
-CREATE TABLE IF NOT EXISTS habitats (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nom VARCHAR(255) NOT NULL,
-  description TEXT,
-  etat VARCHAR(100)
+-- Supprimer les tables si elles existent pour éviter les erreurs
+DROP TABLE IF EXISTS habitats;
+DROP TABLE IF EXISTS images;
+
+-- Création de la table images
+CREATE TABLE images (
+    id_image INT PRIMARY KEY AUTO_INCREMENT,
+    path_img VARCHAR(255) NOT NULL,
+    description_img TEXT
 );
 
--- Insertion des données de test dans la table habitats
-INSERT IGNORE INTO habitats (nom, description, etat) VALUES
-('Savane', 'Habitat pour les lions', 'bien'),
-('Jungle', 'Habitat pour les tigres', 'pas bien '),
-('Océan', 'Habitat pour les dauphins', 'bien');
+-- Création de la table habitats 
+CREATE TABLE habitats (
+    id_habitats INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(100) NOT NULL,
+    description TEXT,
+    id_image INT,
+    CONSTRAINT fk_habitat_image
+    FOREIGN KEY (id_image)
+    REFERENCES images(id_image)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE
+);
+
+-- Insertion des données de test dans la table images
+INSERT INTO images (path_img, description_img) VALUES
+('assets/img/originals/habitats/savane-one.jpg', 'Image savane'),
+('assets/img/originals/habitats/jungle.jpg', 'Image jungle'),
+('assets/img/originals/habitats/marais.jpg', 'Image marais');
+
+-- Insertion des données de test dans la table habitats 
+INSERT INTO habitats (nom, description, id_image) VALUES
+('Savane', 'Habitat pour les lions', 1),
+('Jungle', 'Habitat pour les tigres', 2),
+('Marais', 'Habitat pour les crocodiles', 3);
